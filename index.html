@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BEBIDAS VEC</title>
+  <style>
+    :root{
+      --bg:#f2f2f2;
+      --card:#fff;
+      --accent:#111;
+      --muted:#fafafa;
+      --shadow: 0 2px 6px rgba(0,0,0,0.08);
+      --radius:10px;
+      --maxw:980px;
+    }
+    html,body{height:100%;}
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 0 10px 40px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    header {
+      background: var(--accent);
+      color: #fff;
+      padding: 18px 12px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 8px;
+      margin: 14px auto;
+      max-width: var(--maxw);
+    }
+    .container {
+      max-width: var(--maxw);
+      margin: 18px auto;
+      padding: 0;
+    }
+    .controls {
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+    .controls .search {
+      flex:1;
+      min-width:200px;
+      display:flex;
+      gap:8px;
+    }
+    input[type="search"]{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid #ddd;
+      background:#fff;
+      box-shadow:var(--shadow);
+      font-size:15px;
+    }
+    button {
+      background: var(--accent);
+      color:#fff;
+      border:none;
+      padding:10px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow:var(--shadow);
+    }
+    button.ghost {
+      background: transparent;
+      color: var(--accent);
+      border:1px solid #ddd;
+    }
+    .categoria {
+      background: var(--card);
+      margin-bottom: 12px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border:1px solid #eee;
+    }
+    .cat-titulo {
+      background: linear-gradient(90deg,#111, #2b2b2b);
+      color: #fff;
+      padding: 14px 16px;
+      cursor: pointer;
+      font-size: 18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .cat-titulo .caret { font-size:14px; opacity:0.9; }
+    .cat-contenido {
+      display: none;
+      padding: 14px 16px;
+      background: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .producto {
+      margin-bottom: 8px;
+      padding:8px;
+      border-radius:8px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      border:1px solid rgba(0,0,0,0.03);
+      background:#fff;
+    }
+    .producto small { color:#666; font-size:13px; }
+    .badge { font-weight:700; color:#0b0; }
+    .meta { color:#666; font-size:13px; }
+    .no-results {
+      text-align:center;
+      color:#666;
+      padding:18px;
+    }
+
+    /* Responsive */
+    @media (max-width:600px){
+      .cat-titulo { font-size:16px; padding:12px; }
+      .cat-contenido { padding:12px; font-size:14px; }
+    }
+
+    /* Highlight search */
+    mark { background: #fffb90; padding:0 2px; border-radius:2px; }
+  </style>
+</head>
+<body>
+
+<header>BEBIDAS VEC - LAS MEJORES CERVEZAS Y LOS MEJORES PRECIOS DEL BARRIO</header>
+
+<div class="container">
+
+  <div class="controls">
+    <div class="search">
+      <input id="search" type="search" placeholder="Buscar producto (ej: Stella, 473, Manaos, vino)..." />
+    </div>
+    <button id="showAll">Mostrar todo</button>
+    <button id="hideAll" class="ghost">Ocultar todo</button>
+  </div>
+
+  <!-- AQUI VAN LAS SECCIONES: copia/pega una sección nueva siguiendo la PLANTILLA ABAJO -->
+  <!-- --------------------------------------------------------------- -->
+  <!-- SECCIÓN: CERVEZAS - LATAS -->
+  <div class="categoria">
+    <div class="cat-titulo">CERVEZAS - LATAS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <p><strong>(Llevando 6 o más: -$100 c/u)</strong></p>
+      <div class="producto" data-nombre="Isenbeck 473cc" data-precio="1400"> <div>Isenbeck 473cc</div> <div class="meta">$1300</div></div>
+      <div class="producto" data-nombre="1890 473cc" data-precio="1400"> <div>1890 473cc</div> <div class="meta">$1400</div></div>
+      <div class="producto" data-nombre="Schneider 473cc" data-precio="1700"> <div>Schneider 473cc</div> <div class="meta">$1600</div></div>
+      <div class="producto" data-nombre="Amstel 473cc" data-precio="1800"> <div>Amstel 473cc</div> <div class="meta">$1700</div></div>
+      <div class="producto" data-nombre="Brahma 473cc" data-precio="1800"> <div>Brahma 473cc</div> <div class="meta">$1700</div></div>
+      <div class="producto" data-nombre="Quilmes Clasica 473cc" data-precio="1800"> <div>Quilmes Clásica 473cc</div> <div class="meta">$1700</div></div>
+      <div class="producto" data-nombre="Quilmes Stout 473cc" data-precio="1900"> <div>Quilmes Stout 473cc</div> <div class="meta">$1800</div></div>
+      <div class="producto" data-nombre="Quilmes IPA 473cc" data-precio="1900"> <div>Quilmes IPA 473cc</div> <div class="meta">$1800</div></div>
+      <div class="producto" data-nombre="Budweiser 473cc" data-precio="1900"> <div>Budweiser 473cc</div> <div class="meta">$1800</div></div>
+      <div class="producto" data-nombre="Michelob 473cc" data-precio="1900"> <div>Michelob 473cc</div> <div class="meta">$1900</div></div>
+      <div class="producto" data-nombre="Andes Origen 473cc" data-precio="2100"> <div>Andes Origen (IPA/Rubia/Roja/Negra) 473cc</div> <div class="meta">$2000</div></div>
+      <div class="producto" data-nombre="Imperial 473cc" data-precio="2100"> <div>Imperial (IPA/Lager/Golden) 473cc</div> <div class="meta">$2000</div></div>
+      <div class="producto" data-nombre="Stella Artois 473cc" data-precio="2500"> <div>Stella Artois 473cc</div> <div class="meta">$2400</div></div>
+      <div class="producto" data-nombre="Heineken 473cc" data-precio="2600"> <div>Heineken 473cc</div> <div class="meta">$2400</div></div>
+      <br>
+      <strong>Artesanales</strong>
+      <div class="producto" data-nombre="Pampa IPA" data-precio="2500"> <div>Pampa IPA/Amber/Stout</div> <div class="meta">$2500</div></div>
+      <div class="producto" data-nombre="Guinness 473cc" data-precio="3000"> <div>Guinness 473cc</div> <div class="meta">$3000</div></div>
+      <div class="producto" data-nombre="Schneider 710cc" data-precio="3000"> <div>Schneider 710cc</div> <div class="meta">$2800</div></div>
+      <div class="producto" data-nombre="Brahma 710cc" data-precio="3000"> <div>Brahma 710cc</div> <div class="meta">$2800</div></div>
+      <div class="producto" data-nombre="Quilmes 710cc" data-precio="3000"> <div>Quilmes Clásica 710cc</div> <div class="meta">$2800</div></div>
+      <div class="producto" data-nombre="Budweiser 710cc" data-precio="3100"> <div>Budweiser 710cc</div> <div class="meta">$2900</div></div>
+      <div class="producto" data-nombre="Stella 710cc" data-precio="3800"> <div>Stella Artois 710cc</div> <div class="meta">$3800</div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: CERVEZAS - LITRO -->
+  <div class="categoria">
+    <div class="cat-titulo">CERVEZAS - LITRO <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <p><strong>(Llevando por cajón: -$200 c/u)</strong></p>
+      <div class="producto" data-nombre="Iguana litro" data-precio="2700"> <div>Iguana — $2700</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Palermo litro" data-precio="2700"> <div>Palermo — $2700</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="1890 litro" data-precio="2700"> <div>1890 — $2700</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Quilmes Clasica litro" data-precio="3400"> <div>Quilmes Clásica — $3100</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Brahma litro" data-precio="3400"> <div>Brahma — $3100</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Quilmes IPA litro" data-precio="3500"> <div>Quilmes IPA — $3200</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Quilmes Stout litro" data-precio="3500"> <div>Quilmes Stout — $3200</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Budweiser litro" data-precio="3500"> <div>Budweiser — $3200</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Andes Origen litro" data-precio="3600"> <div>Andes Origen (IPA/Rubia/Roja) — $3400</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Miller litro" data-precio="3900"> <div>Miller — $3800</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Stella litro" data-precio="4500"> <div>Stella Artois — $4500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Heineken litro" data-precio="4900"> <div>Heineken — $4900</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: GASEOSAS -->
+  <div class="categoria">
+    <div class="cat-titulo">GASEOSAS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Manaos" data-precio="1500"> <div>Manaos</div> <div class="meta">$1500</div></div>
+      <div class="producto" data-nombre="Coca 1.5L" data-precio="3100"> <div>Coca/Fanta/Sprite/Schweppes 1.5L</div> <div class="meta">$3100</div></div>
+      <div class="producto" data-nombre="Coca 2.25L" data-precio="4000"> <div>Coca/Fanta/Sprite/Schweppes 2.25L</div> <div class="meta">$4000</div></div>
+      <div class="producto" data-nombre="Coca 3L" data-precio="4900"> <div>Coca/Fanta/Sprite/Schweppes 3L</div> <div class="meta">$4900</div></div>
+      <br>
+      <strong>Retornables</strong>
+      <div class="producto" data-nombre="Plastico 2L" data-precio="2800"> <div>Plástico 2L — $2800</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Vidrio 1L" data-precio="2100"> <div>Vidrio 1L — $2100</div> <div class="meta"></div></div>
+      <br>
+      <div class="producto" data-nombre="7up 2.25L" data-precio="2500"> <div>7up 2.25L — $2500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Pepsi 2.25L" data-precio="2500"> <div>Pepsi 2.25L — $2500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Mirinda 2.25L" data-precio="2500"> <div>Mirinda (Naranja/Manzana/Pomelo) 2.25L — $2500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="H20 2.25L" data-precio="2500"> <div>H20 2.25L — $2500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Soda Cimes 2L" data-precio="1500"> <div>Soda Cimes 2L — $1500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Soda Celestial 2L" data-precio="1400"> <div>Soda Celestial 2L — $1200</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: ENERGIZANTES -->
+  <div class="categoria">
+    <div class="cat-titulo">ENERGIZANTES <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Speed Clasica" data-precio="2400"> <div>Speed Clásica 473cc — $2400</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Speed Zero" data-precio="2400"> <div>Speed Zero 473cc — $2400</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Block 473cc" data-precio="1800"> <div>Block 473cc — $1800</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Red Bull 250cc" data-precio="2500"> <div>Red Bull Clásica 250cc — $2500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Red Bull Saborizado 250cc" data-precio="2500"> <div>Red Bull Saborizado 250cc — $2500</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: VINOS -->
+  <div class="categoria">
+    <div class="cat-titulo">VINOS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <strong>En Caja</strong>
+      <div class="producto" data-nombre="Termidor Abocado" data-precio="1400"> <div>Termidor Abocado — $1400</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Termidor Clasico" data-precio="1900"> <div>Termidor Clásico Tinto/Blanco — $1900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Uvita" data-precio="1900"> <div>Uvita (Blanco/Blanco Dulce/Tinto/Tinto Dulce) — $1900</div> <div class="meta"></div></div>
+      <br>
+      <strong>Botella (Tinto)</strong>
+      <div class="producto" data-nombre="Michel Torino" data-precio="1900"> <div>Michel Torino — $1900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Novecento" data-precio="2700"> <div>Novecento — $2700</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Postales del Fin del Mundo" data-precio="3800"> <div>Postales del Fin del Mundo — $3800</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Viñas de Alvear" data-precio="3000"> <div>Viñas de Alvear — $3000</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Viñas de Balbo" data-precio="3100"> <div>Viñas de Balbo — $3100</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Santa Filomena" data-precio="3300"> <div>Santa Filomena — $3300</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Hormiga Negra" data-precio="3100"> <div>Hormiga Negra — $3100</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Cordero con Piel de Lobo" data-precio="4800"> <div>Cordero con Piel de Lobo — $4800</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Alma Mora" data-precio="5500"> <div>Alma Mora — $5500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Dada" data-precio="5500"> <div>Dada — $5500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Alamos" data-precio="5900"> <div>Alamos — $5900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Nicasia" data-precio="8000"> <div>Nicasia — $8000</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Trumpeter" data-precio="85000"> <div>Trumpeter — $85000</div> <div class="meta"></div></div>
+      <br>
+      <strong>Botella (Blanco)</strong>
+      <div class="producto" data-nombre="Cosecha Tardia" data-precio="4200"> <div>Cosecha Tardía — $4200</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Colon Blanco" data-precio="4000"> <div>Colón Blanco/Rosado — $4000</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- NUEVAS SECCIONES AGREGADAS -->
+  <!-- SECCIÓN: APERITIVOS -->
+  <div class="categoria">
+    <div class="cat-titulo">APERITIVOS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Amargo Obrero" data-precio="4300"> <div>Amargo Obrero — $4300</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Smirnoff Clasico Vodka" data-precio="8200"> <div>Smirnoff Clásico (Vodka) — $8200</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Smirnoff Saborizado Vodka" data-precio="8900"> <div>Smirnoff Saborizado (Vodka) — $8900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Iceberg Vodka" data-precio="5400"> <div>Iceberg (Vodka) — $5400</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Fernet Branca 750ml" data-precio="15900"> <div>Fernet Branca 750ml — $15900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Fernet 1882 750ml" data-precio="7900"> <div>Fernet 1882 750ml — $7900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Fernet Vittone 750ml" data-precio="5000"> <div>Fernet Vittone 750ml — $5000</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Gancia 950ml" data-precio="6900"> <div>Gancia 950ml — $6900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Campari 750ml" data-precio="9500"> <div>Campari 750ml — $9500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Aperol 750ml" data-precio="9800"> <div>Aperol 750ml — $9800</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Cynar 750ml" data-precio="10500"> <div>Cynar 750ml — $10500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Gin Merle 750ml" data-precio="8200"> <div>Gin Merle 750ml — $8200</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Gin Gordons 750ml" data-precio="11900"> <div>Gin Gordons 750ml — $11900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Gin Aconcagua Azul 750ml" data-precio="14500"> <div>Gin Aconcagua Azul 750ml — $14500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Jagermeister 1750ml" data-precio="32000"> <div>Jagermeister 1750ml — $32000</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Red Label 750ml" data-precio="32000"> <div>Red Label 750ml — $32000</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: JUGOS -->
+  <div class="categoria">
+    <div class="cat-titulo">JUGOS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Baggio Pronto 1L" data-precio="1700"> <div>Baggio Pronto 1L — $1700</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Baggio Pronto 250ml" data-precio="500"> <div>Baggio Pronto 250ml — $500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Jugo Tang sobrecito" data-precio="400"> <div>Jugo Tang sobrecito — $400 (Caja $6000)</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Jugo Clight sobrecito" data-precio="400"> <div>Jugo Clight sobrecito — $400 (Caja $6000)</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: ESPUMANTES -->
+  <div class="categoria">
+    <div class="cat-titulo">ESPUMANTES / SIDRAS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Novecento Extra Brut" data-precio="3500"> <div>Novecento Extra Brut — $3500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Federico De Alvear" data-precio="4900"> <div>Federico de Alvear — $4900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Sidra Victoria" data-precio="3100"> <div>Sidra Victoria — $3100</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Sidra Real" data-precio="3100"> <div>Sidra Real — $3100</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Sidra Del Valle" data-precio="2200"> <div>Sidra Del Valle — $2200</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: AGUAS SABORIZADAS -->
+  <div class="categoria">
+    <div class="cat-titulo">AGUAS SABORIZADAS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Aquarius 2.25L" data-precio="3100"> <div>Aquarius 2,25L — $3100</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Levite 1.5L" data-precio="1900"> <div>Levité 1,5L — $1900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Baggio Fresh" data-precio="1200"> <div>Baggio Fresh — $1200</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Brio 1.5L" data-precio="1000"> <div>Brio 1,5L — $1000</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: SODAS -->
+  <div class="categoria">
+    <div class="cat-titulo">SODAS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Cimes 500ml" data-precio="500"> <div>Cimes 500ml — $500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Cimes 2L" data-precio="1500"> <div>Cimes 2L — $1500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Cimes 2.25L" data-precio="1500"> <div>Cimes 2,25L — $1500</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: AGUAS -->
+  <div class="categoria">
+    <div class="cat-titulo">AGUAS <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Cimes 500ml agua" data-precio="500"> <div>Cimes 500ml — $500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Benedictino 500ml" data-precio="900"> <div>Benedictino 500ml — $900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Villavicencio 600ml" data-precio="700"> <div>Villavicencio 600ml — $700</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Smartwater 600ml" data-precio="1500"> <div>Smartwater 600ml — $1500</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Cimes 1.5L agua" data-precio="1100"> <div>Cimes 1,5L — $1100</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: HIELO -->
+  <div class="categoria">
+    <div class="cat-titulo">HIELO <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Hielo 4kg" data-precio="3900"> <div>Hielo 4Kg — $3900</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Hielo 15kg" data-precio="8900"> <div>Hielo 15Kg — $8900</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: GARRAFA -->
+  <div class="categoria">
+    <div class="cat-titulo">GARRAFA <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Garrafa Extragas" data-precio="15000"> <div>Extragas — $15000</div> <div class="meta"></div></div>
+    </div>
+  </div>
+
+  <!-- FIN DE SECCIONES -->
+  <!-- --------------------------------------------------------------- -->
+
+  <div id="noResults" class="no-results" style="display:none;">No se encontraron productos.</div>
+
+  <!-- PLANTILLA PARA NUEVA SECCIÓN (COPIAR/PEGAR)
+  <div class="categoria">
+    <div class="cat-titulo">NOMBRE DE LA SECCIÓN <span class="caret">▼</span></div>
+    <div class="cat-contenido">
+      <div class="producto" data-nombre="Nombre Producto 1" data-precio="1234"> <div>Nombre Producto 1 — $1234</div> <div class="meta"></div></div>
+      <div class="producto" data-nombre="Nombre Producto 2" data-precio="2345"> <div>Nombre Producto 2 — $2345</div> <div class="meta"></div></div>
+    </div>
+  </div>
+  -->
+
+</div>
+
+<script>
+  // COLLAPSE / EXPAND
+  const titulos = document.querySelectorAll('.cat-titulo');
+  titulos.forEach(titulo => {
+    titulo.addEventListener('click', () => {
+      const contenido = titulo.nextElementSibling;
+      const caret = titulo.querySelector('.caret');
+      if (contenido.style.display === 'block') {
+        contenido.style.display = 'none';
+        if (caret) caret.textContent = '▼';
+      } else {
+        contenido.style.display = 'block';
+        if (caret) caret.textContent = '▲';
+      }
+    });
+  });
+
+  // MOSTRAR / OCULTAR TODO
+  document.getElementById('showAll').addEventListener('click', () => {
+    document.querySelectorAll('.cat-contenido').forEach(c => { c.style.display = 'block'; });
+    document.querySelectorAll('.cat-titulo .caret').forEach(c => c.textContent='▲');
+  });
+  document.getElementById('hideAll').addEventListener('click', () => {
+    document.querySelectorAll('.cat-contenido').forEach(c => { c.style.display = 'none'; });
+    document.querySelectorAll('.cat-titulo .caret').forEach(c => c.textContent='▼');
+  });
+
+  // BÚSQUEDA
+  const searchInput = document.getElementById('search');
+  const productos = Array.from(document.querySelectorAll('.producto'));
+  const noResults = document.getElementById('noResults');
+
+  function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, function(m){ return ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[m]); });
+  }
+
+  function highlight(text, q){
+    if(!q) return escapeHtml(text);
+    const re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') +')', 'ig');
+    return escapeHtml(text).replace(re,'<mark>$1</mark>');
+  }
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    let anyVisible = false;
+    productos.forEach(prod => {
+      const nombre = (prod.dataset.nombre || prod.textContent).toLowerCase();
+      const precio = String(prod.dataset.precio || '');
+      let matched = false;
+      if (!q) matched = true;
+      else {
+        if (nombre.includes(q) || precio.includes(q)) matched = true;
+      }
+      // toggle visibility
+      prod.style.display = matched ? 'flex' : 'none';
+      // highlight name inside (replace inner text safely)
+      const titleDiv = prod.firstElementChild;
+      if (titleDiv) {
+        const raw = titleDiv.textContent || '';
+        titleDiv.innerHTML = highlight(raw, q);
+      }
+      if (matched) {
+        anyVisible = true;
+        // Ensure parent section is visible so user sees result
+        const parentContenido = prod.closest('.cat-contenido');
+        if (parentContenido) parentContenido.style.display = 'block';
+      }
+    });
+
+    // Hide sections with no visible children
+    document.querySelectorAll('.categoria').forEach(cat => {
+      const contenido = cat.querySelector('.cat-contenido');
+      const anyChildVisible = Array.from(contenido.querySelectorAll('.producto')).some(p => p.style.display !== 'none');
+      cat.style.display = anyChildVisible ? '' : 'none';
+    });
+
+    noResults.style.display = anyVisible ? 'none' : 'block';
+  });
+
+  // Al cargar: dejar todo oculto (como antes) — pero puedes cambiarlo
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.cat-contenido').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('.cat-titulo .caret').forEach(c => c.textContent='▼');
+  });
+</script>
+
+</body>
+</html>
